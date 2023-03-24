@@ -10,7 +10,7 @@
   <body>
     <nav>
       <div class="logo">
-        <img src=".\photo_accueil\pintview.png" alt="Logo de votre site">
+        <p>Le Site du chat</p>
       </div>
       <ul>
         <li><a href="./index.php?action=connexion" class="connexion">Connexion</a></li>

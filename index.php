@@ -2,6 +2,7 @@
 session_start();
 
 require "controllers/controller.php";
+
 try {
    if (empty($_GET['action'])) { 
    require('view/accueil_view.php');
