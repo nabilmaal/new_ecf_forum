@@ -1,0 +1,130 @@
+* {
+  padding: 0;
+  margin: 0;
+  font-family: sans-serif;
+  color: rgb(29, 23, 23);
+}
+
+
+nav {
+  background-color: white;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  height: 80px;
+  padding: 0 40px;
+  box-shadow: 0px 2px 5px rgba(0,0,0,0.1);
+}
+
+.logo img {
+  height: 85px;
+}
+
+ul {
+  display: flex;
+  list-style: none;
+  margin: 0;
+  padding: 0;
+}
+
+li {
+  margin: 0 10px;
+}
+
+a {
+  display: block;
+  padding: 10px 20px;
+  font-size: 18px;
+  text-decoration: none;
+  border-radius: 10px;
+  transition: background-color 0.3s ease;
+}
+
+.connexion {
+  background-color: orange;
+  color: white;
+}
+
+.inscription {
+  background-color: white;
+  color: orange;
+  border: 2px solid orange;
+}
+
+.slide img {
+  height: 500px;
+  width: 250px;
+  margin: 0 35px;
+}
+
+.slide {
+  display: grid;
+  justify-content: center;
+  grid-template-columns: repeat(12, 1fr);
+  grid-template-rows: repeat(5, 1fr);
+  grid-column-gap: 0px;
+  grid-row-gap: 0px;
+
+  position: absolute;
+  top: 0;
+  left: 0;
+  opacity: 1;
+  transition: opacity 5s ease-in-out;
+}
+
+.div1 { 
+  grid-area: 5 / 4 / 9 / 6;
+}
+.div2 { 
+  grid-area: 6 / 6 / 10 / 8; 
+}
+.div3 { 
+  grid-area: 5 / 8 / 9 / 10; 
+}
+.div4 { 
+  grid-area: 4 / 10 / 8 / 12; 
+}
+.div5 { 
+  grid-area: 4 / 2 / 8 / 4; 
+}
+.div6 { 
+  grid-area: 5/ 6/ 4 / 9; 
+}
+
+.slideshow .slide:nth-of-type(3) {
+  position: absolute;
+  top: 0;
+  left: 0;
+  opacity: 0;
+  transition: opacity 1s ease-in-out;
+  z-index: -1;
+}
+
+.slideshow:hover .slide:nth-of-type(2) {
+  opacity: 0;
+}
+
+.slideshow:hover .slide:nth-of-type(3) {
+  opacity: 1;
+  z-index: 1;
+}
+
+.slideshow {
+  position: relative;
+  animation: slide 30s infinite alternate;
+}
+
+@keyframes slide {
+  0% {
+    opacity: 1;
+  }
+  33.33% {
+    opacity: 1;
+  }
+  66.67% {
+    opacity: 1;
+  }
+  100% {
+    opacity: 1;
+  }
+}

@@ -1,0 +1,63 @@
+* {
+    padding: 0px;
+    margin: 0px;
+    text-decoration: none;
+    font-family: sans-serif;
+}
+
+h1 {
+    font-size: 40px;
+    color: rgb(29, 30, 82);
+    font-family: sans-serif;
+    padding-bottom: 60px;
+    margin-top: 70px;
+}
+#form_img {
+    padding-top: 150px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+#co_insc {
+    display: flex;
+    flex-direction: column;
+}
+#connexion {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    height: 400px;
+    width: 350px;
+    border: solid 1px black;
+}
+#inscription {
+    display: flex;
+    flex-direction: column;
+    width: 350px;
+    height: 50px;
+    border: solid 1px black;
+    justify-content: center;
+    align-items: center;
+    margin-top: 10px;
+}
+a { 
+    color: rgb(31, 17, 77);
+}
+#form_img #img {
+    height: 50px;
+    width: 50px;
+}
+
+input {
+    height: 30px;
+    width: 65%;
+}
+
+#submit {
+    border-radius: 10px;
+    background-color: rgb(16, 15, 80);
+    color: rgb(255, 255, 255);
+    border-color: rgb(22, 16, 73);
+    margin-top: 20px;
+}
+

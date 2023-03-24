@@ -1,0 +1,57 @@
+* {
+    padding: 0px;
+    margin: 0px;
+    text-decoration: none;
+    font-family: sans-serif;
+}
+
+h1 {
+    font-size: 40px;
+    color: orange;
+    font-family: sans-serif;
+    padding-bottom: 60px;
+    margin-top: 70px;
+}
+
+#modification {
+    display: wrap;
+    flex-wrap: ;
+    justify-content: center;
+    align-items: center;
+    height: 300px;
+    width: 850px;
+    border: solid 1px black;
+}
+input {
+    height: 30px;
+    width: 25%;
+}
+
+#submit {
+    border-radius: 10px;
+    background-color: orange;
+    color: rgb(255, 255, 255);
+    border-color: orange;
+    margin-top: 20px;
+}
+
+#mod_upl {
+    
+    display: flex;
+    flex-direction: column;
+    padding-top: 150px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+
+#upload {
+    display: flex;
+    width: 850px;
+    height: 50px;
+    border: solid 1px black;
+    justify-content: center;
+    align-items: center;
+    margin-top: 10px;
+}
