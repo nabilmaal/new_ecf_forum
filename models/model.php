@@ -78,6 +78,14 @@ function post($titre, $contenu, $id_user) {
     $stmt->execute();
 }
 
+function comments ($id_user, $commentaire, $id_topic) {
+    $db = dbConnect();
+
+    $stmt = $db->prepare('INSERT INTO comments (content, id_user, id_topic) VALUES (:content, :id_user, :id_topic)');
+    $stmt->execute(array(':content' => $commentaire, ':id_user' => $id_user, ':id_topic' => $id_topic));
+
+}
+
 
 function SelectTopics(){
     $db = dbConnect();
@@ -89,14 +97,6 @@ function SelectTopics(){
     return $result;  
 }
 
-
-function comments ($id_user, $commentaire, $id_topic) {
-    $db = dbConnect();
-
-    $stmt = $db->prepare('INSERT INTO comments (content, id_user, id_topic) VALUES (:content, :id_user, :id_topic)');
-    $stmt->execute(array(':content' => $commentaire, ':id_user' => $id_user, ':id_topic' => $id_topic));
-
-}
 
 function getCommentIds() {
     $db = dbConnect();

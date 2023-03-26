@@ -17,7 +17,9 @@
   </div>
   <ul>
     <li><a href="./index.php?action=accueil">Accueil</a></li>
+    <li><a href="./index.php?action=deconnexion">Deconnexion</a></li>
   </ul>
+
 </nav>
     <form action="./index.php?action=update" method="POST">
     <div id="mod_upl"> 

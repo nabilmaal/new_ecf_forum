@@ -121,7 +121,12 @@ if (isset($_POST['commentaire']) && !empty($_POST['commentaire']) && isset($_POS
     exit();
 }
 
-
+function deconnexion() {
+    session_destroy(); 
+    
+    header('Location: ./index.php?action=accueil');
+    require('view/profil_view.php');
+}
 
 
 

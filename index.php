@@ -12,6 +12,10 @@ else if (isset($_GET['action']) && $_GET['action'] =='connexion') {
     connexion(); 
 }
 
+else if (isset($_GET['action']) && $_GET['action'] =='deconnexion') {
+    deconnexion(); 
+}
+
 else if (isset($_GET['action']) && $_GET['action'] =='profil') {
     profil(); 
 }

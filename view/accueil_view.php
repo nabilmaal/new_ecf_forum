@@ -17,7 +17,6 @@
         <li><a href="./index.php?action=inscription" class="inscription">Inscription</a></li>
       </ul>
     </nav>
-    <?php var_dump($_SESSION['topic']) ?>
     <?php foreach ($_SESSION['topics'] as $topic): ?>
       <div class="topics">
         <h2 id="top"><?php echo $topic['titre'] ?></h2>
