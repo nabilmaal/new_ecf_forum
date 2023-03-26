@@ -13,7 +13,8 @@ function subscrib() {
             if (!preg_match($regex1, $email) || !preg_match($regex, $_POST['password'])) {
                 echo "Une erreur lors de votre inscription est survenue ! recommencez. ";
             }
-            $sub = subscriber($email, $password);
+            
+            $sub = subscriber($_POST['name'], $_POST['email'], $password);
             echo 'Félicitation vous pouvez deseormez vous connectez';
         } 
     }

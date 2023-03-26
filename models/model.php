@@ -10,24 +10,32 @@ function dbConnect() {
     return $database; 
 }
 
-function subscriber($email, $password) {
+
+function subscriber($name, $email, $password) {
+
     $db = dbConnect();
-    $sql = $db->prepare('INSERT INTO users (name, email, password) VALUES (?,?,?)');
-    $sql->execute(array($_POST['name'], $email, $password));
-    return $sql;
+
+    $stmt=$db->prepare('INSERT INTO users (name, email, password) VALUES (:name, :email, :password)');
+    $stmt->bindParam(':name', $name);
+    $stmt->bindParam(':email', $email);
+    $stmt->bindParam(':password', $password);
+    $stmt->execute();
 }
+
 
 function select() {
     $db = dbConnect();
 
     $name = $_POST['name'] ?? "";
 
-    $sql = $db->prepare('SELECT * FROM users WHERE name = :name');
-    $sql->execute(array(':name' => $name));
-    $result = $sql->fetchAll(PDO::FETCH_ASSOC); 
+    $stmt = $db->prepare('SELECT * FROM users WHERE name = :name');
+    $stmt->bindParam(':name', $name);
+    $stmt->execute();
+    $result = $stmt->fetchAll(PDO::FETCH_ASSOC);
 
-    return $result;  
+    return $result;
 }
+
 
 function update() {
     $db = dbConnect();
@@ -37,9 +45,11 @@ function update() {
     $password = $_POST['password'];
 
     if (isset($name, $email, $password)) {
-        $sql = $db->prepare('SELECT password, email FROM users WHERE name = :name AND email = :email');
-        $sql->execute(array(':name' => $name, ':email' => $email));
-        $result = $sql->fetch(PDO::FETCH_ASSOC);
+        $stmt=$db->prepare('SELECT password, email FROM users WHERE name = :name AND email = :email');
+        $stmt->bindParam(':name', $name);
+        $stmt->bindParam(':email', $email);
+        $stmt->execute();
+        $result = $stmt->fetch(PDO::FETCH_ASSOC);
         $hashed_password = $result['password'];
 
         if (password_verify($password, $hashed_password)) {
@@ -47,8 +57,13 @@ function update() {
             $newemail = $_POST['newemail'];
             $newpass = password_hash($_POST['newpass'], PASSWORD_DEFAULT);
 
-            $sql = $db->prepare('UPDATE users SET name = :newname, email = :newemail, password = :newpass WHERE name = :name AND email = :email');
-            $sql->execute(array(':newname' => $newname, ':newemail' => $newemail, ':newpass' => $newpass, ':name' => $name, ':email' => $email));
+            $stmt=$db->prepare('UPDATE users SET name = :newname, email = :newemail, password = :newpass WHERE name = :name AND email = :email');
+            $stmt->bindParam(':newname', $newname);
+            $stmt->bindParam(':newemail', $newemail);
+            $stmt->bindParam(':newpass', $newpass);
+            $stmt->bindParam(':name', $name);
+            $stmt->bindParam(':email', $email);
+            $stmt->execute();
         }
     }
 }
@@ -56,7 +71,7 @@ function update() {
 function post($titre, $contenu, $id_user) {
     $db = dbConnect();
 
-    $stmt = $db->prepare("INSERT INTO topics (titre, contenu, id_user) VALUES (:titre, :contenu, :id_user)");
+    $stmt=$db->prepare("INSERT INTO topics (titre, contenu, id_user) VALUES (:titre, :contenu, :id_user)");
     $stmt->bindParam(':titre', $titre);
     $stmt->bindParam(':contenu', $contenu);
     $stmt->bindParam(':id_user', $id_user);
@@ -67,15 +82,17 @@ function post($titre, $contenu, $id_user) {
 function SelectTopics(){
     $db = dbConnect();
 
-    $sql = $db->prepare('SELECT * FROM topics');
-    $sql->execute();
-    $result = $sql->fetchAll(PDO::FETCH_ASSOC); 
+    $stmt=$db->prepare('SELECT * FROM topics');
+    $stmt->execute();
+    $result = $stmt->fetchAll(PDO::FETCH_ASSOC); 
+
     return $result;  
 }
 
 
 function comments ($id_user, $commentaire, $id_topic) {
     $db = dbConnect();
+
     $stmt = $db->prepare('INSERT INTO comments (content, id_user, id_topic) VALUES (:content, :id_user, :id_topic)');
     $stmt->execute(array(':content' => $commentaire, ':id_user' => $id_user, ':id_topic' => $id_topic));
 
@@ -83,8 +100,10 @@ function comments ($id_user, $commentaire, $id_topic) {
 
 function getCommentIds() {
     $db = dbConnect();
+
     $stmt = $db->prepare('SELECT id_topic, id_user FROM comments');
     $stmt->execute();
     $result = $stmt->fetchAll(PDO::FETCH_ASSOC);
+    
     return $result;
 }
