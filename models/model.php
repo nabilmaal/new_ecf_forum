@@ -107,3 +107,12 @@ function getCommentIds() {
     
     return $result;
 }
+
+function delete() {
+    $db = dbConnect();
+
+    $stmt = $db->prepare('DELETE FROM topics WHERE id_user = (SELECT id_user FROM users WHERE id_user = :id_user');
+    $stmt->bindParam (':id_user', $id_user);
+    $stmt->execute();
+
+}

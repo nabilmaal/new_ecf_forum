@@ -128,5 +128,9 @@ function deconnexion() {
     require('view/profil_view.php');
 }
 
+function DeleteTopics() {
+    delete(); 
+}
 
-
+// avant de continuer la function delete faire apparaitre les potes dans la vue profil
+// puis afficher le bouton labas pour choisir s'il supprime les topics ou pas. 
