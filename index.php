@@ -25,6 +25,11 @@ else if (isset($_GET['action']) && $_GET['action'] =='accueil') {
    
 }
 
+else if (isset($_GET['action']) && $_GET['action'] =='topics') {
+    topics(); 
+    
+ }
+
 else if (isset($_GET['action']) && $_GET['action'] == 'inscription') {
     subscrib();
 }

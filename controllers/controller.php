@@ -13,9 +13,11 @@ function subscrib() {
             if (!preg_match($regex1, $email) || !preg_match($regex, $_POST['password'])) {
                 echo "Une erreur lors de votre inscription est survenue ! recommencez. ";
             }
-            
-            $sub = subscriber($_POST['name'], $_POST['email'], $password);
-            echo 'Félicitation vous pouvez deseormez vous connectez';
+            else {
+                 $sub = subscriber($_POST['name'], $_POST['email'], $password);
+                 echo 'Félicitation vous pouvez deseormez vous connectez';
+           }
+           
         } 
     }
     require('view/insc_view.php');
@@ -130,6 +132,11 @@ function deconnexion() {
 
 function DeleteTopics() {
     delete(); 
+}
+
+
+function topics() {
+    require('view/topics_view.php');
 }
 
 // avant de continuer la function delete faire apparaitre les potes dans la vue profil
